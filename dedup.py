@@ -12,7 +12,7 @@ def main():
     subparsers = parser.add_subparsers(dest="command")
 
     parser_gen = subparsers.add_parser("generate")
-    parser_gen.add_argument("directory", help="The directory to generate a duplication list for")
+    parser_gen.add_argument("directories", nargs="+", help="The directories to generate a duplication list for")
     parser_gen.add_argument("-o", "--output", help="generate dedup info in this file")
     
     parser_finalize = subparsers.add_parser("finalize")
@@ -26,7 +26,7 @@ def main():
     args = parser.parse_args()
 
     if args.command == "generate":
-        handle_generate(args.directory, args.output)
+        handle_generate(args.directories, args.output)
     elif args.command == "finalize":
         if args.dry_run:
             args.verbose = True
@@ -82,24 +82,24 @@ def handle_finalize(dup_file="dedup.txt", move=None, remove_dir=False, preserve_
                         os.rmdir(dir)
                         dir = os.path.dirname(dir)
     
-def handle_generate(directory, output="./dedup.txt"):
+def handle_generate(directories, output="./dedup.txt"):
     dedup = {}
     duplicates = {}
+    for directory in directories:
+        # put a list of all the files with same hashes as value of key hash
+        # get all the lists of size > 1, with list[0] being the first found file in duplicate list
+        # (so size 1 means no duplicates)
+        for root, _, files in os.walk(directory):
+            for file in files:
+                path = os.path.join(root, file)
+                with open(path, "rb") as f:
+                    hash = hashlib.sha256(f.read()).hexdigest()
 
-    # put a list of all the files with same hashes as value of key hash
-    # get all the lists of size > 1, with list[0] being the first found file in duplicate list
-    # (so size 1 means no duplicates)
-    for root, _, files in os.walk(directory):
-        for file in files:
-            path = os.path.join(root, file)
-            with open(path, "rb") as f:
-                hash = hashlib.sha256(f.read()).hexdigest()
-
-                if hash in dedup:
-                    duplicates[hash].append(path)
-                else:
-                    dedup[hash] = path
-                    duplicates[hash] = [path]
+                    if hash in dedup:
+                        duplicates[hash].append(path)
+                    else:
+                        dedup[hash] = path
+                        duplicates[hash] = [path]
 
     duplicates = {k:v for k,v in duplicates.items() if len(v) > 1}
 
