@@ -106,10 +106,17 @@ def handle_generate(directory):
         toml_dict = {}
         for hash, duplicate in duplicates.items():
             # shortest is usually original
-            duplicate.sort(key=lambda item: len(item))
+            # we want it to be sorted by directory, but we also want
+            # the shortest name value
+            duplicate_copy = duplicate.copy()
+            duplicate_copy.sort(key=lambda item: len(os.path.basename(item)))
+
+            keep = duplicate_copy[0]
+            remove = list(filter(lambda d: d != keep, duplicate))
+
             toml_dict[hash] = {}
-            toml_dict[hash]["keep"] = duplicate[0]
-            toml_dict[hash]["remove"] = duplicate[1:]
+            toml_dict[hash]["keep"] = keep
+            toml_dict[hash]["remove"] = remove
         
         toml.dump(toml_dict, output)
 
