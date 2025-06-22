@@ -15,13 +15,14 @@ options:
   -h, --help           show this help message and exit
 ```
 ```
-usage: dedup generate [-h] directory
+usage: dedup generate [-h] [-o OUTPUT] directories [directories ...]
 
 positional arguments:
-  directory   The directory to generate a duplication list for
+  directories          The directories to generate a duplication list for
 
 options:
-  -h, --help  show this help message and exit
+  -h, --help           show this help message and exit
+  -o, --output OUTPUT  generate dedup info in this file
 ```
 ```
 usage: dedup finalize [-h] [-d DUP_FILE] [-m MOVE] [-r] [-p] [-v] [-t]
