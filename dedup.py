@@ -20,15 +20,18 @@ def main():
     parser_finalize.add_argument("-r", "--remove-dir", action="store_true", help="Remove empty directories after move/delete")
     parser_finalize.add_argument("-p", "--preserve-dir", action="store_true", help="Preserve directory output on move")
     parser_finalize.add_argument("-v", "--verbose", action="store_true")
+    parser_finalize.add_argument("-t", "--dry-run", action="store_true", help="Do not perform changes on the filesystem. Only print verbose info")
 
     args = parser.parse_args()
 
     if args.command == "generate":
         handle_generate(args.directory)
     elif args.command == "finalize":
-        handle_finalize(args.dup_file, args.move, args.remove_dir, args.preserve_dir, args.verbose)
+        if args.dry_run:
+            args.verbose = True
+        handle_finalize(args.dup_file, args.move, args.remove_dir, args.preserve_dir, args.verbose, args.dry_run)
 
-def handle_finalize(dup_file="dedup.txt", move=None, remove_dir=False, preserve_dir=False, verbose=False):
+def handle_finalize(dup_file="dedup.txt", move=None, remove_dir=False, preserve_dir=False, verbose=False, dry_run=False):
     with open(dup_file, "r") as f:
         dedup = toml.load(f)
     
@@ -40,7 +43,8 @@ def handle_finalize(dup_file="dedup.txt", move=None, remove_dir=False, preserve_
             if move:
                 if preserve_dir:
                     move_path = os.path.join(move, remove)
-                    os.makedirs(os.path.dirname(move_path), exist_ok=True)
+                    if not dry_run:
+                        os.makedirs(os.path.dirname(move_path), exist_ok=True)
                 else:
                     move_path = os.path.join(move, os.path.basename(remove))
 
@@ -53,20 +57,23 @@ def handle_finalize(dup_file="dedup.txt", move=None, remove_dir=False, preserve_
                     if match:
                         move_path = re.sub(dedup_pattern, f"dedup {str(int(match.group(1))+1)}{match.group(2)}", move_path)
                     else:
-                        name, ext = os.path.splitext(os.path.basename(remove))
-
+                        name, ext = os.path.splitext(remove)
                         move_path = os.path.join(move, f"{name} dedup 1{ext}")
                         
 
                 if verbose:
                     print(f"MOVE {remove} ➡️ {move_path}")
-                shutil.move(remove, move_path)
+
+                if not dry_run:
+                    shutil.move(remove, move_path)
             else:
                 if verbose:
                     print(f"DELETE {remove}")
-                os.remove(remove)
                 
-                if remove_dir:
+                if not dry_run:
+                    os.remove(remove)
+                
+                if remove_dir and not dry_run:
                     # remove empty parent dirs
                     dir = os.path.dirname(remove)
                     while not os.listdir(dir):
