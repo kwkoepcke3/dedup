@@ -1,0 +1,114 @@
+0946888e1b566fb6ce58f33cb8df94a5b98f572d290f8a9904e698391d71b557:
+  keep: test/dedup.txt
+  remove:
+  - test/subdirectory/dedup copy 5 dedup 4.txt
+  - test/subdirectory/dedup copy 5 dedup 3.txt
+  - test/subdirectory/dedup copy 5 dedup 2.txt
+  - test/subdirectory/dedup copy 5 dedup 1.txt
+  - test/subdirectory/dedup copy 3 dedup 4.txt
+  - test/subdirectory/dedup copy dedup 1.txt
+  - test/subdirectory/dedup copy dedup 2.txt
+  - test/subdirectory/dedup copy dedup 3.txt
+  - test/subdirectory/dedup copy 3 dedup 2.txt
+  - test/subdirectory/dedup copy 3 dedup 3.txt
+  - test/subdirectory/dedup copy 3 dedup 1.txt
+  - test/subdirectory/dedup copy dedup 4.txt
+  - test/subdirectory/dedup copy 4 dedup 1.txt
+  - test/subdirectory/dedup copy 4 dedup 2.txt
+  - test/subdirectory/dedup copy 4 dedup 3.txt
+  - test/subdirectory/dedup copy 4 dedup 4.txt
+  - test/subdirectory/dedup copy 2 dedup 1.txt
+  - test/subdirectory/dedup dedup 1.txt
+  - test/subdirectory/dedup copy 4.txt
+  - test/subdirectory/dedup copy 2 dedup 3.txt
+  - test/subdirectory/dedup copy 2 dedup 2.txt
+  - test/subdirectory/dedup copy.txt
+  - test/subdirectory/dedup copy 5.txt
+  - test/subdirectory/dedup copy 2.txt
+  - test/subdirectory/dedup copy 2 dedup 4.txt
+  - test/subdirectory/dedup copy 3.txt
+  - test/subdirectory 3/dedup copy 5 dedup 4.txt
+  - test/subdirectory 3/dedup copy 5 dedup 3.txt
+  - test/subdirectory 3/dedup copy 5 dedup 2.txt
+  - test/subdirectory 3/dedup copy 5 dedup 1.txt
+  - test/subdirectory 3/dedup copy 3 dedup 4.txt
+  - test/subdirectory 3/dedup copy dedup 1.txt
+  - test/subdirectory 3/dedup copy dedup 2.txt
+  - test/subdirectory 3/dedup copy dedup 3.txt
+  - test/subdirectory 3/dedup copy 3 dedup 2.txt
+  - test/subdirectory 3/dedup copy 3 dedup 3.txt
+  - test/subdirectory 3/dedup copy 3 dedup 1.txt
+  - test/subdirectory 3/dedup copy dedup 4.txt
+  - test/subdirectory 3/dedup copy 4 dedup 1.txt
+  - test/subdirectory 3/dedup copy 4 dedup 2.txt
+  - test/subdirectory 3/dedup copy 4 dedup 3.txt
+  - test/subdirectory 3/dedup copy 4 dedup 4.txt
+  - test/subdirectory 3/dedup copy 2 dedup 1.txt
+  - test/subdirectory 3/dedup dedup 1.txt
+  - test/subdirectory 3/dedup copy 4.txt
+  - test/subdirectory 3/dedup copy 2 dedup 3.txt
+  - test/subdirectory 3/dedup copy 2 dedup 2.txt
+  - test/subdirectory 3/dedup copy.txt
+  - test/subdirectory 3/dedup copy 5.txt
+  - test/subdirectory 3/dedup copy 2.txt
+  - test/subdirectory 3/dedup copy 2 dedup 4.txt
+  - test/subdirectory 3/dedup copy 3.txt
+287b2ba24b8870b7e09490d46624564bd7eb4ccc284cd2572407072a52c6d18d:
+  keep: test/unnamed.jpg
+  remove:
+  - test/subdirectory/unnamed copy 5 dedup 1.jpg
+  - test/subdirectory/unnamed copy 5 dedup 3.jpg
+  - test/subdirectory/unnamed copy 5 dedup 2.jpg
+  - test/subdirectory/unnamed copy dedup 2.jpg
+  - test/subdirectory/unnamed copy.jpg
+  - test/subdirectory/unnamed copy dedup 3.jpg
+  - test/subdirectory/unnamed copy dedup 1.jpg
+  - test/subdirectory/unnamed copy 3 dedup 1.jpg
+  - test/subdirectory/unnamed copy 3 dedup 2.jpg
+  - test/subdirectory/unnamed copy 3 dedup 3.jpg
+  - test/subdirectory/unnamed copy 4 dedup 2.jpg
+  - test/subdirectory/unnamed copy 4 dedup 3.jpg
+  - test/subdirectory/unnamed copy 4 dedup 1.jpg
+  - test/subdirectory/unnamed.jpg
+  - test/subdirectory/unnamed dedup 2.jpg
+  - test/subdirectory/unnamed copy 2 dedup 3.jpg
+  - test/subdirectory/unnamed copy 2 dedup 2.jpg
+  - test/subdirectory/unnamed dedup 3.jpg
+  - test/subdirectory/unnamed copy 4.jpg
+  - test/subdirectory/unnamed dedup 1.jpg
+  - test/subdirectory/unnamed copy 2 dedup 1.jpg
+  - test/subdirectory/unnamed copy 5.jpg
+  - test/subdirectory/unnamed copy 2.jpg
+  - test/subdirectory/unnamed copy 3.jpg
+  - test/subdirectory 3/unnamed copy 5 dedup 1.jpg
+  - test/subdirectory 3/unnamed copy 5 dedup 3.jpg
+  - test/subdirectory 3/unnamed copy 5 dedup 2.jpg
+  - test/subdirectory 3/unnamed copy dedup 2.jpg
+  - test/subdirectory 3/unnamed copy.jpg
+  - test/subdirectory 3/unnamed copy dedup 3.jpg
+  - test/subdirectory 3/unnamed copy dedup 1.jpg
+  - test/subdirectory 3/unnamed copy 3 dedup 1.jpg
+  - test/subdirectory 3/unnamed copy 3 dedup 2.jpg
+  - test/subdirectory 3/unnamed copy 3 dedup 3.jpg
+  - test/subdirectory 3/unnamed copy 4 dedup 2.jpg
+  - test/subdirectory 3/unnamed copy 4 dedup 3.jpg
+  - test/subdirectory 3/unnamed copy 4 dedup 1.jpg
+  - test/subdirectory 3/unnamed.jpg
+  - test/subdirectory 3/unnamed dedup 2.jpg
+  - test/subdirectory 3/unnamed copy 2 dedup 3.jpg
+  - test/subdirectory 3/unnamed copy 2 dedup 2.jpg
+  - test/subdirectory 3/unnamed dedup 3.jpg
+  - test/subdirectory 3/unnamed copy 4.jpg
+  - test/subdirectory 3/unnamed dedup 1.jpg
+  - test/subdirectory 3/unnamed copy 2 dedup 1.jpg
+  - test/subdirectory 3/unnamed copy 5.jpg
+  - test/subdirectory 3/unnamed copy 2.jpg
+  - test/subdirectory 3/unnamed copy 3.jpg
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855:
+  keep: test/subdirectory/dedup.txt
+  remove:
+  - test/subdirectory/dedup dedup 3.txt
+  - test/subdirectory/dedup dedup 2.txt
+  - test/subdirectory 3/dedup.txt
+  - test/subdirectory 3/dedup dedup 3.txt
+  - test/subdirectory 3/dedup dedup 2.txt
