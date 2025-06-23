@@ -61,6 +61,7 @@ def handle_finalize(dup_file="dedup.txt", move=None, remove_dir=False, preserve_
                         name, ext = os.path.splitext(remove)
                         move_path = os.path.join(move, f"{name} dedup 1{ext}")
                         
+                move_path = os.path.normalize(move_path)
 
                 if verbose:
                     print(f"MOVE {remove} ➡️ {move_path}")
