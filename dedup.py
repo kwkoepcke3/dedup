@@ -100,10 +100,9 @@ def handle_generate(directories, output="./dedup.txt", verbose=False):
 
                 with open(path, "rb") as f:
                     hash = hashlib.file_digest(f, "sha256").hexdigest()
-                    if hash in dedup:
+                    if hash in duplicates:
                         duplicates[hash].append(path)
                     else:
-                        dedup[hash] = path
                         duplicates[hash] = [path]
 
     if verbose:
