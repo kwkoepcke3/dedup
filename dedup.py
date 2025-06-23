@@ -78,10 +78,7 @@ def handle_finalize(dup_file="dedup.txt", move=None, remove_dir=False, preserve_
             if remove_dir and not dry_run:
                 # remove empty parent dirs
                 dir = os.path.dirname(remove)
-                print(dir)
                 while len(os.listdir(dir)) == 0:
-                    print(dir)
-                    print(len(os.listdir(dir)))
                     print(f"RMDIR {dir}")
                     os.rmdir(dir)
                     dir = os.path.dirname(dir)
