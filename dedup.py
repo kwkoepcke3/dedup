@@ -6,6 +6,7 @@ import functools
 import toml
 import shutil
 import re
+from pathlib import Path
 
 def main():
     parser = argparse.ArgumentParser(prog="dedup")
@@ -49,8 +50,6 @@ def handle_finalize(dup_file="dedup.txt", move=None, remove_dir=False, preserve_
                 else:
                     move_path = os.path.join(move, os.path.basename(remove))
 
-
-
                 # if path exists, come up with unique path
                 while os.path.exists(move_path):
                     dedup_pattern = r"dedup (\d+)(\.\w+)?"
@@ -61,7 +60,8 @@ def handle_finalize(dup_file="dedup.txt", move=None, remove_dir=False, preserve_
                         name, ext = os.path.splitext(remove)
                         move_path = os.path.join(move, f"{name} dedup 1{ext}")
                         
-                move_path = os.path.normalize(move_path)
+                move_path = str(Path(move_path))
+                remove = str(Path(remove))
 
                 if verbose:
                     print(f"MOVE {remove} ➡️ {move_path}")
@@ -92,7 +92,7 @@ def handle_generate(directories, output="./dedup.txt"):
         # (so size 1 means no duplicates)
         for root, _, files in os.walk(directory):
             for file in files:
-                path = os.path.normalize(os.path.join(root, file))
+                path = str(Path(os.path.join(root, file)))
                 with open(path, "rb") as f:
                     hash = hashlib.sha256(f.read()).hexdigest()
 
