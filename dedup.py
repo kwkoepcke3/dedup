@@ -3,7 +3,7 @@ import argparse
 import hashlib
 import os
 import functools
-import toml
+import yaml
 import shutil
 import re
 from pathlib import Path
@@ -35,7 +35,7 @@ def main():
 
 def handle_finalize(dup_file="dedup.txt", move=None, remove_dir=False, preserve_dir=False, verbose=False, dry_run=False):
     with open(dup_file, "r") as f:
-        dedup = toml.load(f)
+        dedup = yaml.load(f)
     
     for hash, duplicates in dedup.items():
         removes = duplicates["remove"]
@@ -105,7 +105,7 @@ def handle_generate(directories, output="./dedup.txt"):
     duplicates = {k:v for k,v in duplicates.items() if len(v) > 1}
 
     with open(output, "w") as output:
-        toml_dict = {}
+        yaml_dict = {}
         for hash, duplicate in duplicates.items():
             # shortest is usually original
             # we want it to be sorted by directory, but we also want
@@ -116,11 +116,11 @@ def handle_generate(directories, output="./dedup.txt"):
             keep = duplicate_copy[0]
             remove = list(filter(lambda d: d != keep, duplicate))
 
-            toml_dict[hash] = {}
-            toml_dict[hash]["keep"] = keep
-            toml_dict[hash]["remove"] = remove
+            yaml_dict[hash] = {}
+            yaml_dict[hash]["keep"] = keep
+            yaml_dict[hash]["remove"] = remove
         
-        toml.dump(toml_dict, output)
+        yaml.dump(yaml_dict, output)
 
     
 if __name__ == "__main__":
