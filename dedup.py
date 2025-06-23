@@ -35,7 +35,7 @@ def main():
 
 def handle_finalize(dup_file="dedup.txt", move=None, remove_dir=False, preserve_dir=False, verbose=False, dry_run=False):
     with open(dup_file, "r") as f:
-        dedup = yaml.load(f)
+        dedup = yaml.safe_load(f)
     
     for hash, duplicates in dedup.items():
         removes = duplicates["remove"]
