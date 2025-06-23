@@ -75,13 +75,16 @@ def handle_finalize(dup_file="dedup.txt", move=None, remove_dir=False, preserve_
                 if not dry_run:
                     os.remove(remove)
                 
-                if remove_dir and not dry_run:
-                    # remove empty parent dirs
-                    dir = os.path.dirname(remove)
-                    while not os.listdir(dir):
-                        print(f"RMDIR {dir}")
-                        os.rmdir(dir)
-                        dir = os.path.dirname(dir)
+            if remove_dir and not dry_run:
+                # remove empty parent dirs
+                dir = os.path.dirname(remove)
+                print(dir)
+                while len(os.listdir(dir)) == 0:
+                    print(dir)
+                    print(len(os.listdir(dir)))
+                    print(f"RMDIR {dir}")
+                    os.rmdir(dir)
+                    dir = os.path.dirname(dir)
     
 def handle_generate(directories, output="./dedup.txt"):
     dedup = {}
@@ -94,7 +97,7 @@ def handle_generate(directories, output="./dedup.txt"):
             for file in files:
                 path = str(Path(os.path.join(root, file)))
                 with open(path, "rb") as f:
-                    hash = hashlib.sha256(f.read()).hexdigest()
+                    hash = hashlib.file_digest(f, "sha256").hexdigest()
 
                     if hash in dedup:
                         duplicates[hash].append(path)
