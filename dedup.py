@@ -57,9 +57,9 @@ def handle_finalize(dup_file="dedup.txt", move=None, remove_dir=False, preserve_
                     if match:
                         move_path = re.sub(dedup_pattern, f"dedup {str(int(match.group(1))+1)}{match.group(2)}", move_path)
                     else:
-                        name, ext = os.path.splitext(remove)
+                        name, ext = os.path.splitext(os.path.basename(remove))
                         move_path = os.path.join(move, f"{name} dedup 1{ext}")
-                        
+ 
                 move_path = str(Path(move_path))
                 remove = str(Path(remove))
 
