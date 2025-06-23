@@ -116,6 +116,7 @@ def handle_generate(directories, output="./dedup.txt", verbose=False):
         new_len = len(duplicates)
         print(f"Found {new_len} hashes with duplicates")
         print(f"{orig_len - new_len} unique files by hash")
+        print(f"{new_len} duplicate files by hash")
 
     with open(output, "w") as output:
         yaml_dict = {}
