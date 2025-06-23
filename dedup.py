@@ -91,7 +91,7 @@ def handle_generate(directories, output="./dedup.txt"):
         # (so size 1 means no duplicates)
         for root, _, files in os.walk(directory):
             for file in files:
-                path = os.path.join(root, file)
+                path = os.path.normalize(os.path.join(root, file))
                 with open(path, "rb") as f:
                     hash = hashlib.sha256(f.read()).hexdigest()
 
