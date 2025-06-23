@@ -1,7 +1,18 @@
-[a41916c6a677c56d3c102a66f733ce45d7058c4ab61c71ef262701fefdb90d8b]
-keep = "test/Screenshot 2025-06-16 at 7.06.20\u202fPM.png"
-remove = [ "test/awa/Screenshot 2025-06-16 at 7.06.20\u202fPM.png", "test/Screenshot 2025-06-16 at 7.06.20\u202fPM copy.png", "test/Screenshot 2025-06-16 at 7.06.20\u202fPM copy 4.png", "test/Screenshot 2025-06-16 at 7.06.20\u202fPM copy 2.png", "test/Screenshot 2025-06-16 at 7.06.20\u202fPM copy 3.png", "test/awa copy/Screenshot 2025-06-16 at 7.06.20\u202fPM.png", "test/awa/Screenshot 2025-06-16 at 7.06.20\u202fPM copy.png", "test/awa copy/Screenshot 2025-06-16 at 7.06.20\u202fPM copy.png", "test/awa copy/Screenshot 2025-06-16 at 7.06.20\u202fPM copy 2.png",]
-
-[287b2ba24b8870b7e09490d46624564bd7eb4ccc284cd2572407072a52c6d18d]
-keep = "test/unnamed.jpg"
-remove = [ "test/awa/unnamed.jpg", "test/unnamed copy.jpg", "test/unnamed copy 4.jpg", "test/unnamed copy 2.jpg", "test/unnamed copy 3.jpg", "test/awa copy/unnamed.jpg", "test/awa/unnamed copy.jpg", "test/awa copy/unnamed copy.jpg", "test/awa copy/unnamed copy 2.jpg",]
+0946888e1b566fb6ce58f33cb8df94a5b98f572d290f8a9904e698391d71b557:
+  keep: test/dedup.txt
+  remove:
+  - test/subdirectory/dedup.txt
+  - test/subdirectory/dedup copy 4.txt
+  - test/subdirectory/dedup copy.txt
+  - test/subdirectory/dedup copy 5.txt
+  - test/subdirectory/dedup copy 2.txt
+  - test/subdirectory/dedup copy 3.txt
+287b2ba24b8870b7e09490d46624564bd7eb4ccc284cd2572407072a52c6d18d:
+  keep: test/unnamed.jpg
+  remove:
+  - test/subdirectory/unnamed copy.jpg
+  - test/subdirectory/unnamed.jpg
+  - test/subdirectory/unnamed copy 4.jpg
+  - test/subdirectory/unnamed copy 5.jpg
+  - test/subdirectory/unnamed copy 2.jpg
+  - test/subdirectory/unnamed copy 3.jpg
